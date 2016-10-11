@@ -33,7 +33,7 @@ int main(void)
 {
     int input, data, i;
     _Init(&queue);
-    while(scanf("%d", &input)!=EOF && input!=3)
+    while(scanf("%d", &input)!=EOF)
     {
         switch(input)
         {
@@ -46,14 +46,13 @@ int main(void)
                 //printf("%d\n", _Pop(&queue));
                 break;
         }
-        if(queue.front <= queue.rear)
-        {
-            printf("%d", queue.stk[queue.front-1]);
-            for(i=queue.front; i<queue.rear; i++)
-                printf(" %d", queue.stk[i]);
-            BR;
-        }
-        printf("%d\n%d\n", queue.front, queue.rear);
+    }
+    if(queue.front <= queue.rear)
+    {
+        printf("%d", queue.stk[queue.front-1]);
+        for(i=queue.front; i<queue.rear; i++)
+            printf(" %d", queue.stk[i]);
+        BR;
     }
     return 0;
 }
