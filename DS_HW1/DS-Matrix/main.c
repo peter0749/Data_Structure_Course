@@ -9,7 +9,7 @@ void rotate(void)//For MAXN is odd
     int temp;
     m = MAXN>>1;
     n = m - 1;
-    printf("%d %d\n",m,n);
+    //printf("%d %d\n",m,n);
     for(i=0; i<=n; i++)
 	{
 		for(j=0; j<=m; j++)
