@@ -51,9 +51,9 @@ int main(void)
         {
         case 'L':
             rotate();
-            display();
             break;
         }
     }
+    display();
     return 0;
 }
