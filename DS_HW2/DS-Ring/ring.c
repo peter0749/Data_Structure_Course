@@ -4,20 +4,22 @@
 #define MAXN 110
 
 int graph[MAXN][MAXN];
-char visit[MAXN][MAXN];
+char visit[MAXN];
 int pa[MAXN];
 
 char dfs(int u, int dim){
-    int i;
+    int i, j, t;
     for(i=0; i<dim; ++i){
         if(graph[u][i]){
             //printf("%d -> %d\n",u+1,i+1);
-            if(visit[u][i]){
-                if(pa[i]==u ) return 1;
-                pa[i] = u;
+            if(visit[i]){
+                for(j=pa[u], t=i; j!=t; j=pa[t=j]){
+                    //printf("%d ",j+1);
+                    if(j==i) return 1;
+                }
             }
             else{
-                visit[u][i] = 1;
+                visit[i] = 1;
                 pa[i] = u;
                 if(dfs(i,dim)) return 1;
             }
@@ -38,6 +40,7 @@ int main(void){
         for(i=0; i<dim; ++i){
             //printf("Start: %d\n",i+1);
             memset(visit,0x00,sizeof(visit));
+            visit[i] = 1;
             for(j=0; j<dim; ++j) pa[j]=j;
             if(dfs(i,dim))break;
         }
