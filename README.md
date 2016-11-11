@@ -1,4 +1,4 @@
 # Data_Structure_Homeworks
 ###My Homeworks in Data Structure Course
-#####1. Arrays, Stack and Queue
-#####2. Tree and Graph
+#####HW1. Arrays, Stack and Queue
+#####HW2. Tree and Graph
