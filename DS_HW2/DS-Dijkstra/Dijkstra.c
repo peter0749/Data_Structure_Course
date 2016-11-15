@@ -3,7 +3,7 @@
 #include <string.h>
 #include <limits.h>
 #include <stdbool.h>
-#define MAX_NODE 10000
+#define MAX_NODE 100000
 #define INF 1000000009
 
 typedef int _PAIR_TYPE;
@@ -33,7 +33,7 @@ void _push_back(_VECTOR *v, VEC_TYPE val){
     VEC_TYPE *newptr=NULL;
     int i;
     if( v->usage==v->full ){
-        v->full<<=1;
+        v->full += v->full<<1;
         newptr = (VEC_TYPE*)malloc(v->full*sizeof(VEC_TYPE));
         memcpy(newptr,v->arr,v->usage*sizeof(VEC_TYPE));
         free(v->arr);
@@ -94,6 +94,7 @@ void dijkstra(int src, int tar, _VECTOR *heap){
 	_PUSH_HEAP(heap,temp);
 	while(heap->usage){
         temp = _POP_HEAP(heap);
+        if(temp.first==tar) return;
 		if(temp.second > dist[temp.first] ) continue;
 		u = temp.first;
 		uw = temp.second;
@@ -150,7 +151,7 @@ int main(void){
             p.first = v;p.second = w;
             _push_back(&graph[u], p);
         }
-        
+
         dijkstra(S,T, &heap);
         printf("%d\n", dist[T]);
 		for(i=0; i<=max_node_num; ++i) graph[i].usage=0;
