@@ -3,7 +3,7 @@
 #include <string.h>
 #include <limits.h>
 #include <stdbool.h>
-#define DIM 1001
+#define DIM 1050
 #define INF INT_MAX
 bool map[DIM][DIM];
 int power[DIM];
@@ -13,7 +13,7 @@ bool dfs(int u, int dim, int tar){
     if(total>=tar) return true;
     int i;
     for(i=0; i<dim; ++i){
-        if(map[u][i]){
+        if(map[u][i] && power[i]!=INF){
             if(total > power[i]){
                 //printf("# %d %d\n", u, i);
                 total += power[i];
@@ -42,11 +42,8 @@ int main(void){
         }
         fails=0, success=0, total=K;
         if(total<L){
-            if(total > power[0]){
-                success++;
-                dfs(0, N, L);
-            }
-            else fails++;
+			for(i=0; i<N; ++i) map[N][i] = true;
+			dfs(N,N,L);
         }
         printf("%d %d %d\n", fails, success, total);
     }
