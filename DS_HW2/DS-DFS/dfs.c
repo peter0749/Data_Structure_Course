@@ -46,7 +46,7 @@ int main(void){
         if(total > power[0]){
             ++succ;
             total+=power[0];
-            power[0] = 0;
+            //power[0] = 0;
             solve(0,N,L);
         }else fail++;
         printf("%d %d %d\n",fail,succ,total);
