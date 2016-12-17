@@ -187,7 +187,6 @@ int main(void){
         }
         n=i;
         fgets(input,10,stdin);
-        qsort(data, n, sizeof(inputDATA), cmpdata);
         for(i=0; i<n; ++i) freq[i] = data[i].freq;
         bitn = huffmanTree(freq, code, n);
         for(i=0; i<n; ++i){
